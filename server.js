@@ -21,10 +21,10 @@ app.get('/', async function (request, response) {
   const [sectiesRes, vragenRes] = await Promise.all([
 
     // Haal alle tijdlijn secties op uit de API
-    fetch('https://fdnd-agency.directus.app/items/teylers_museum_exhibits_sections?fields=id,title,start_year,end_year,summary,era,content_blocks,cover&sort=start_year'),
+    fetch(directusBase + 'teylers_museum_exhibits_sections?fields=id,title,start_year,end_year,summary,era,content_blocks,cover&sort=start_year'),
 
     // Haal alle quiz vragen op uit de API
-    fetch('https://fdnd-agency.directus.app/items/teylers_museum_quiz_questions?fields=id,question,exhibit_section,options,explanation_correct,explanation_wrong')
+    fetch(directusBase + '/teylers_museum_quiz_questions?fields=id,question,exhibit_section,options,explanation_correct,explanation_wrong')
   ])
 
    // Parse de secties uit het JSON response
@@ -56,7 +56,7 @@ app.get('/scores', async function (request, response) {
   response.render('scores.liquid', { pogingen })
 })
 
-// Maak een nieuw quiz-attempt aan en geef het id terug
+// Maak een nieuw quiz attempt aan en geef het id terug
 app.post('/quiz/attempt', async function (request, response) {
   const res = await fetch(directusBase + 'teylers_museum_quiz_attempts', {
     method: 'POST',
