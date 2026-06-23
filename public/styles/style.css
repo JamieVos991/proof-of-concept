@@ -17,6 +17,13 @@ main {
     width: auto;
     max-width: 400px;
   }
+
+  path {
+    stroke: var(--tijdlijn-lijn);
+    stroke-width: 1.5;
+    stroke-dasharray: 5 8;
+    fill: none;
+  }
 }
 
 /* Info panel */
@@ -370,7 +377,7 @@ main[data-staat="quiz"] .quiz-kaart-wrapper {
 
 .score-balk-wrapper {
   height: 4px;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--scorebalk-track);
   border-radius: 2px;
   overflow: hidden;
 }

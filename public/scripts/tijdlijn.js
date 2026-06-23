@@ -13,6 +13,12 @@ const NS = 'http://www.w3.org/2000/svg'
 // offset = huidige positie op de tijdlijn, dragY = Y-positie bij muisdruk, dragStart = offset bij start drag
 let offset = 0, dragY, dragStart
 
+let tijdlijnKleur = getComputedStyle(document.documentElement).getPropertyValue('--tijdlijn-punt').trim()
+window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+  tijdlijnKleur = getComputedStyle(document.documentElement).getPropertyValue('--tijdlijn-punt').trim()
+  render()
+})
+
 // Modulo die ook correct werkt bij negatieve getallen
 const mod = (n, m) => ((n % m) + m) % m
 
@@ -58,10 +64,10 @@ function render() {
     // Maak een SVG-groep aan voor het jaar (cirkel + tekst)
     const g = document.createElementNS(NS, 'g')
     g.setAttribute('transform', `translate(${x},${y}) rotate(${graden})`)
-    g.innerHTML = `<circle r="${on ? 5 : 4}" fill="rgba(255,255,255,${alpha})"></circle>
+    g.innerHTML = `<circle r="${on ? 5 : 4}" fill="rgba(${tijdlijnKleur},${alpha})"></circle>
       <text x="${on ? 16 : 14}" dominant-baseline="middle" font-family="sans-serif"
         font-size="${on ? 44 : 28}" font-weight="${on ? 'bold' : 'normal'}"
-        fill="rgba(255,255,255,${alpha})">${jaar}</text>`
+        fill="rgba(${tijdlijnKleur},${alpha})">${jaar}</text>`
     groep.appendChild(g)
   }
 }

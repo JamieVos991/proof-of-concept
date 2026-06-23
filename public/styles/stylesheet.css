@@ -16,6 +16,20 @@
   --primaire-kleur: hsl(194, 37%, 16%);
   --secundiary-kleur: hsl(37, 53%, 92%);
   --action-kleur: hsl(48, 100%, 50%);
+  --tijdlijn-lijn: rgba(255, 255, 255, 0.35);
+  --tijdlijn-punt: 255, 255, 255;
+  --scorebalk-track: rgba(255, 255, 255, 0.15);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --primaire-kleur: hsl(37, 53%, 94%);
+    --secundiary-kleur: hsl(194, 37%, 16%);
+    --action-kleur: hsl(48, 100%, 40%);
+    --tijdlijn-lijn: rgba(26, 49, 56, 0.3);
+    --tijdlijn-punt: 26, 49, 56;
+    --scorebalk-track: rgba(0, 0, 0, 0.12);
+  }
 }
 
 body {
